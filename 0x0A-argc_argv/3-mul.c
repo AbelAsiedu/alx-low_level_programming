@@ -1,40 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
 
 /**
- * _atoi - converts a string to an integer
- * @s: string to be converted
- *
- * Return: the int converted from the string
- */
-int _atoi(char *s)
-{
-	int result = 0;
-	int i = 0;
-
-	while (s[i] != '\0')
-	{
-		result = result * 10 + (s[i] - '0');
-		i++;
-	}
-
-	return (result);
-}
-
-/**
- * mul - multiplies two integers
- * @a: first integer
- * @b: second integer
- *
- * Return: the result of multiplication
- */
-int mul(int a, int b)
-{
-	return (a * b);
-}
-
-/**
- * main - multiplies two numbers
+ * main - prints the minimum number of coins to make change for an amount of money
  * @argc: number of arguments
  * @argv: array of arguments
  *
@@ -42,19 +11,34 @@ int mul(int a, int b)
  */
 int main(int argc, char *argv[])
 {
-	int num1, num2, result;
+    int num, j, result;
+    int coins[] = {25, 10, 5, 2, 1};
 
-	if (argc != 3)
-	{
-		printf("Error\n");
-		return (1);
-	}
+    if (argc != 2)
+    {
+        printf("Error\n");
+        return (1);
+    }
 
-	num1 = _atoi(argv[1]);
-	num2 = _atoi(argv[2]);
-	result = mul(num1, num2);
+    num = atoi(argv[1]);
+    result = 0;
 
-	printf("%d\n", result);
+    if (num < 0)
+    {
+        printf("0\n");
+        return (0);
+    }
 
-	return (0);
+    for (j = 0; j < 5 && num >= 0; j++)
+    {
+        while (num >= coins[j])
+        {
+            result++;
+            num -= coins[j];
+        }
+    }
+
+    printf("%d\n", result);
+
+    return (0);
 }
