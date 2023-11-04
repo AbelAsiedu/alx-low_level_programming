@@ -3,8 +3,9 @@
 
 /**
  * malloc_checked - allocate memory using malloc
- * @b: input size to allocate
- * Return: pointer to the allocated memory
+ *
+ * @b: input int
+ * Return: void
  */
 void *malloc_checked(unsigned int b)
 {
