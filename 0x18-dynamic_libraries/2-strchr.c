@@ -1,29 +1,23 @@
 #include "main.h"
 
 /**
-  * _strchr - locate character in string
-  * @s: source string
-  * @c: character to find
+  * _strchr - main function
   *
-  * Return: the string from character found
+  * @s: Function parameter
+  *
+  * @c: Function parameter
+  *
+  * Return: Always o.
   */
 char *_strchr(char *s, char c)
 {
-	int a = 0, b;
+	int k;
 
-	while (s[a])
+	for (k = 0; s[k] >= '\0'; k++)
 	{
-		a++;
+	if (s[k] == c)
+	return (s + k);
 	}
-
-	for (b = 0; b <= a; b++)
-	{
-		if (c == s[b])
-		{
-			s += b;
-			return (s);
-		}
-	}
-
-	return ('\0');
+	return (0);
 }
+
